@@ -19,7 +19,7 @@ public class PedidoItem {
 
     private Integer quantidade;
 
-    private BigDecimal precoUnitario;
+    private BigDecimal preco;
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")

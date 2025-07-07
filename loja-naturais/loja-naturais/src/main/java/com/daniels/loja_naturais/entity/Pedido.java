@@ -7,6 +7,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import com.daniels.loja_naturais.enums.Status;
 
 @Entity
 @Data
@@ -23,7 +24,8 @@ public class Pedido {
 
     private BigDecimal total;
 
-    private String status; // podemos transformar em enum depois
+    @Enumerated(EnumType.STRING) 
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
@@ -31,4 +33,7 @@ public class Pedido {
 
     @OneToMany(mappedBy = "pedido")
     private List<PedidoItem> itens;
+
+    @ManyToOne
+    private EnderecoEntrega enderecoEntrega;
 }
